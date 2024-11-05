@@ -1,19 +1,52 @@
-# Your Name Here
+# Madison Manning
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section:
+# 11/05/2024
+# Lab 08
+# Lab Section: 10
 # Sources, people worked with, help given to:
-# your
-# comments
-# here
-
 
 # Write a function that will properly check strings to see if they are an int or float, and convert them if so
 # If they can't be converted return false
 # Other wise return the converted int or float 
 # Floats should only have one decimal point in them 
 
+
+
+def check_numbers():
+    string = input("please type a number, exit to exit")
+    
+    isNeg = False
+
+    if string.lower() == "exit":
+        return False
+
+    if string[0] == "-":
+        isNeg = True
+        string = string.replace("-", "")
+        
+    if "." in string:
+        extra_num = string.split(".")
+        if len(extra_num) == 2 and extra_num[0].isdigit() and extra_num[1].isdigit():
+            if isNeg == True:
+                return -1*float(string)
+            else:
+                return float(string)
+
+    elif string.isdigit() == True:
+        if isNeg == True:
+            return -1*int(string)
+        else:
+            return int(string)
+    
+    else:
+        print(f"Please enter a numeric value")
+
+while True:
+    num = check_numbers()
+    if num == False:
+        break
+    else:
+        print(num)
 
 print("*" * 75)
 
