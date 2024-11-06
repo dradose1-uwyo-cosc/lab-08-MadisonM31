@@ -66,8 +66,9 @@ def y_values(m, b, x1, x2):
     all_y = []
 
     for num in range(x1, x2+1):
-        all_y.append(m*num + b)
-        if num > x2+1:
+        y = m*num + b
+        all_y.append(y)
+        if num == x2:
             return all_y
 
 while True:
