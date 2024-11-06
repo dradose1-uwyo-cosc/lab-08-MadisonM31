@@ -12,13 +12,10 @@
 
 
 
-def check_numbers():
-    string = input("please type a number, exit to exit")
+def check_numbers(string):
+    #string = input("please type a number, exit to exit")
     
     isNeg = False
-
-    if string.lower() == "exit":
-        return False
 
     if string[0] == "-":
         isNeg = True
@@ -40,13 +37,7 @@ def check_numbers():
     
     else:
         print(f"Please enter a numeric value")
-
-while True:
-    num = check_numbers()
-    if num == False:
-        break
-    else:
-        print(num)
+        return False
 
 print("*" * 75)
 
@@ -70,6 +61,35 @@ print("*" * 75)
 # Exit on the word exit
 # Remember all inputs are strings, but the function needs ints or floats
 # Call your function and print the resulting list
+def y_values(m, b, x1, x2):
+    
+    all_y = []
+
+    for num in range(x1, x2+1):
+        all_y.append(m*num + b)
+        if num > x2+1:
+            return all_y
+
+while True:
+    m = input("slope, exit to quit")
+    if m.lower() == "exit":
+        break
+    m = check_numbers(m)
+    b = input("y-intercept")
+    b = check_numbers(b)
+    x1 = input("X lower bound")
+    x1 = check_numbers(x1)
+    x2 = input("X upper bound")
+    x2 = check_numbers(x2)
+    if m != False and b != False and x1 != False and x2 != False:
+        if type(x1) == float or type(x2) == float:
+            print(f"please enter whole X numbers")
+        else:
+            print(y_values(m, b, x1, x2))
+
+
+
+
 
 print("*" * 75)
 
