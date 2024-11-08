@@ -106,15 +106,17 @@ print("*" * 75)
 
 def sq_root(a, b, c):
     inner_eq = (b ** 2) - (4 * a * c)
-    numbers = []
-    added_num = 0
-    sub_num = 0
     if inner_eq < 0:
-        return null
+        return None
     else:
-        numbers.append(((-1 * b) + (inner_eq ** 0.5)) / (2 * a))
-        numbers.append(((-1 * b) - (inner_eq ** 0.5)) / (2 * a))
-        return numbers
+        return inner_eq
+
+def quad_form(a, b, c):
+    numbers = []
+    inner_eq = sq_root(a, b, c)
+    numbers.append(((-1 * b) + (inner_eq ** 0.5)) / (2 * a))
+    numbers.append(((-1 * b) - (inner_eq ** 0.5)) / (2 * a))
+    return numbers
 
 while True:
     a = input("a, exit to quit")
@@ -126,5 +128,11 @@ while True:
     c =  input("c")
     c = check_numbers(c)
 
-    if a != False and b != False and c != False and d != False:
+    if a != False and b != False and c != False:
+        if sq_root(a, b, c) == None:
+            print(f"Imaginary number")
+        else:
+            values = quad_form(a, b, c)
+            print(f"{values[0]}, {values[1]}")
+            
         
